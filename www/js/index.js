@@ -21,7 +21,7 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.populate();
-        new atc.view.main({el: $("#app")});
+        new atc.view.main({el: $("#app"), collection: atc.datacontainer});
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -43,12 +43,11 @@ var app = {
 
     },
     populate: function(){
-      var datacontainer = new atc.collection.elementList();
-      datacontainer.fetch({
-          success: function() {
-              console.log("sucessful fetch");
-          }
-      })
-
+        atc.datacontainer = new atc.collection.elementList();
+        atc.datacontainer.fetch({
+                success: function() {
+                    console.log("fetch sucess");
+                }
+            });
     }
 };

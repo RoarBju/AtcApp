@@ -25,8 +25,8 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <script type="text/javascript" src="cordova.js"></script>
 
-        <script type="text/javascript" src="js/lib/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="js/lib/underscore-min.js"></script>
+        <script type="text/javascript" src="js/lib/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="js/lib/backbone-min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
 
@@ -38,12 +38,38 @@
         <script type="text/javascript" src="js/collection/atc_collection.js"></script>
         <!-- Views -->
         <script type="text/javascript" src="js/view/mainView.js"></script>
-
+        <script type="text/javascript" src="js/view/searchView.js"></script>
+        <script type="text/javascript" src="js/view/listElement.js"></script>
 
         <title>ATC World</title>
     </head>
     <body>
+    <!-- Templates -->
+    <script type="text/template" id="main_template">
+        <button type="button">Søk etter ATC-koder</button>
+    </script>
+
+    <script type="text/template" id="search_template">
+        <div>
+        <select>
+            <option value="10">10</option>
+            <option value="100">100</option>
+            <option value="1000">1000</option>
+        </select>
+        </div>
+        <button type="button">Vis liste</button>
+        <ul></ul>
+    </script>
+
+    <script type="text/template" id="listelement_template">
+         <div><span><%= code %>  - </span><span><%= name %></span></div>
+    </script>
+
+    <!--Code -->
         <div id="app"></div>
+
+        <div id="searchView"></div>
+
         <script type="text/javascript">
             app.initialize();
         </script>
