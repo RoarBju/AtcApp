@@ -16,9 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var atc = atc || {};
 var app = {
     // Application Constructor
     initialize: function() {
+        this.populate();
+        new atc.view.main({el: $("#app")});
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -37,6 +40,15 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+
+    },
+    populate: function(){
+      var datacontainer = new atc.collection.elementList();
+      datacontainer.fetch({
+          success: function() {
+              console.log("sucessful fetch");
+          }
+      })
 
     }
 };
