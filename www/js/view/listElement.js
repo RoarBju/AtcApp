@@ -19,7 +19,8 @@ atc.view = atc.view || {};
          },
 
          viewDetailed: function() {
-             console.log(this.model.getName());
+                new atc.view.detailedView({el: $("#detailedView"), model: this.model});
+                atc.slider($("searchView"),$("#detailedView"), "right");
          }
      });
 })();

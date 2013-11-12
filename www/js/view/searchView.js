@@ -8,6 +8,7 @@ atc.view = atc.view || {};
         },
         initialize: function(options) {
             this.render();
+            atc.populate();
         },
 
         render: function() {
@@ -18,7 +19,7 @@ atc.view = atc.view || {};
         populateList: function() {
             this.$el.find("ul").empty();
             var fragment = document.createDocumentFragment();
-            this.collection.each(function(model) {
+            atc.datacontainer.each(function(model) {
                     var element = new atc.view.listElement({model: model});
                     fragment.appendChild(element.render().el);
             },this);

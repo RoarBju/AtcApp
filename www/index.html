@@ -28,7 +28,11 @@
         <script type="text/javascript" src="js/lib/underscore-min.js"></script>
         <script type="text/javascript" src="js/lib/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="js/lib/backbone-min.js"></script>
+
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/pageSlider.css" />
+
+
 
         <script type="text/javascript" src="js/index.js"></script>
 
@@ -40,6 +44,7 @@
         <script type="text/javascript" src="js/view/mainView.js"></script>
         <script type="text/javascript" src="js/view/searchView.js"></script>
         <script type="text/javascript" src="js/view/listElement.js"></script>
+        <script type="text/javascript" src="js/view/detailedView.js"></script>
 
         <title>ATC World</title>
     </head>
@@ -65,10 +70,18 @@
          <div><span><%= code %>  - </span><span><%= name %></span></div>
     </script>
 
-    <!--Code -->
-        <div id="app"></div>
+    <script type="text/template" id="testesttest">
+            <div>Name: <%= name %> </div>
+            <div>Code: <%= code %> </div>
+    </script>
 
-        <div id="searchView"></div>
+    <!--Code -->
+        <div id="app" class="page center"></div>
+
+        <div id="searchView" class="page right"></div>
+
+
+        <div id="detailedView" class="page right"></div>
 
         <script type="text/javascript">
             app.initialize();

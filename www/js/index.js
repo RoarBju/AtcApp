@@ -20,8 +20,8 @@ var atc = atc || {};
 var app = {
     // Application Constructor
     initialize: function() {
-        this.populate();
-        new atc.view.main({el: $("#app"), collection: atc.datacontainer});
+        var mainview = new atc.view.main({el: $("#app"), className: "page"});
+        mainview.render();
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -41,13 +41,30 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
 
-    },
-    populate: function(){
-        atc.datacontainer = new atc.collection.elementList();
-        atc.datacontainer.fetch({
-                success: function() {
-                    console.log("fetch sucess");
-                }
-            });
     }
 };
+
+atc.populate = function() {
+    atc.datacontainer = new atc.collection.elementList();
+    atc.datacontainer.fetch({
+            success: function() {
+                console.log("fetch sucess");
+            }
+        });
+}
+
+atc.slider = function (current, page, from) {
+    console.log(current);
+    console.log(page);
+    console.log(from);
+       // Position the page at the starting position of the animation
+        page.attr("class", "page " + from);
+
+        current.one('webkitTransitionEnd', function(e) {
+            $(e.target).remove();
+        });
+
+        // Position the new page and the current page at the ending position of their animation with a transition class indicating the duration of the animation
+        page.attr("class", "page transition center");
+        current.attr("class", "page transition " + (from === "left" ? "right" : "left"));
+}
