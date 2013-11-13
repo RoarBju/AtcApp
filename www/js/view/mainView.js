@@ -16,6 +16,8 @@ atc.view = atc.view || {};
        search: function() {
             new atc.view.searchView({el: $("#searchView")});
             atc.slider(this.$el,$("#searchView"), "right");
+           $("#detailedView").attr("class", "page right");
+
        }
    });
 })();
