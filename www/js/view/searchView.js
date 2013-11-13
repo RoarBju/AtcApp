@@ -4,7 +4,8 @@ atc.view = atc.view || {};
     atc.view.searchView = Backbone.View.extend({
 
         events: {
-            "touchstart button": "populateList"
+            "touchstart button": "populateList" ,
+            "swipeleft": "swipe"
         },
         initialize: function(options) {
             this.render();
@@ -24,6 +25,9 @@ atc.view = atc.view || {};
                     fragment.appendChild(element.render().el);
             },this);
             this.$el.find("ul").append(fragment);
+        },
+        swipe: function() {
+            console.log("swipe");
         }
     })
 })();

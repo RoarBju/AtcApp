@@ -3,14 +3,13 @@ atc.view = atc.view || {};
 (function() {
    atc.view.main = Backbone.View.extend({
        events: {
-           "touchstart button": "search"
+           "click button": "search",
+           "swiperight": "search"
        },
-
 
        render: function() {
            var temp = _.template( $("#main_template").html(),{});
            this.$el.html(temp);
-
            return this;
        },
 

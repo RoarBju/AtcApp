@@ -3,6 +3,7 @@ atc.view = atc.view || {};
 (function() {
      atc.view.listElement = Backbone.View.extend({
          tagName: 'li',
+         className: "list",
          events: {
              "touchstart": "viewDetailed"
          },
@@ -20,7 +21,7 @@ atc.view = atc.view || {};
 
          viewDetailed: function() {
                 new atc.view.detailedView({el: $("#detailedView"), model: this.model});
-                atc.slider($("searchView"),$("#detailedView"), "right");
+                atc.slider($("#searchView"),$("#detailedView"), "right");
          }
      });
 })();

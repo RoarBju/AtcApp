@@ -2,15 +2,12 @@ atc.view = atc.view || {};
 
 (function() {
    atc.view.detailedView = Backbone.View.extend({
-         /*
-         TODO
-         */
          initialize: function() {
              this.render();
          },
 
         render: function() {
-            var template = _.template($("#testesttest").html(), {
+            var template = _.template($("#detailedView_template").html(), {
                   code: this.model.getCode(),
                   name: this.model.getName()
              });

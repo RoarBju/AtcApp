@@ -22,7 +22,7 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=medium-dpi"/>
         <script type="text/javascript" src="cordova.js"></script>
 
         <script type="text/javascript" src="js/lib/underscore-min.js"></script>
@@ -55,13 +55,13 @@
     </script>
 
     <script type="text/template" id="search_template">
-        <div>
+      <!--  <div>
         <select>
             <option value="10">10</option>
             <option value="100">100</option>
             <option value="1000">1000</option>
         </select>
-        </div>
+        </div> -->
         <button type="button">Vis liste</button>
         <ul></ul>
     </script>
@@ -70,7 +70,7 @@
          <div><span><%= code %>  - </span><span><%= name %></span></div>
     </script>
 
-    <script type="text/template" id="testesttest">
+    <script type="text/template" id="detailedView_template">
             <div>Name: <%= name %> </div>
             <div>Code: <%= code %> </div>
     </script>
@@ -81,7 +81,7 @@
         <div id="searchView" class="page right"></div>
 
 
-        <div id="detailedView" class="page right"></div>
+        <div id="detailedView"></div>
 
         <script type="text/javascript">
             app.initialize();

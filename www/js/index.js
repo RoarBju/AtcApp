@@ -49,22 +49,15 @@ atc.populate = function() {
     atc.datacontainer.fetch({
             success: function() {
                 console.log("fetch sucess");
+            },
+            error: function() {
+                console.log("fetch error");
             }
         });
 }
 
 atc.slider = function (current, page, from) {
-    console.log(current);
-    console.log(page);
-    console.log(from);
-       // Position the page at the starting position of the animation
         page.attr("class", "page " + from);
-
-        current.one('webkitTransitionEnd', function(e) {
-            $(e.target).remove();
-        });
-
-        // Position the new page and the current page at the ending position of their animation with a transition class indicating the duration of the animation
         page.attr("class", "page transition center");
         current.attr("class", "page transition " + (from === "left" ? "right" : "left"));
 }
