@@ -102,3 +102,23 @@ h1 {
 .list {
     padding-bottom:25px;
 }
+
+.centered {
+    position: fixed;
+    top: 20%;
+    left: 34%;
+}
+
+.largeButton {
+    height: 20em;
+    width: 20em;
+}
+
+.mediumButton {
+    height: 10em;
+    width: 10em;
+}
+
+.topCenter {
+    left: 34%;
+}
