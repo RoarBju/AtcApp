@@ -4,9 +4,11 @@ atc.view = atc.view || {};
     atc.view.searchView = Backbone.View.extend({
 
         events: {
-            "touchstart button": "populateList" ,
+            "touchstart #viewList": "populateList" ,
+            "touchstart #listBack": "back"
         },
-        initialize: function(options) {
+
+        initialize: function() {
             atc.populate();
         },
 
@@ -15,6 +17,7 @@ atc.view = atc.view || {};
             this.$el.html(template);
             return this;
         },
+
         populateList: function() {
             this.$el.find("ul").empty();
             var fragment = document.createDocumentFragment();
@@ -23,7 +26,11 @@ atc.view = atc.view || {};
                     fragment.appendChild(element.render().el);
             },this);
             this.$el.find("ul").append(fragment);
-        }
+        },
 
+        back: function() {
+            atc.routes.navigate("", {trigger: true});
+            atc.slider(this.$el,$("#app"), "left");
+        }
     })
 })();

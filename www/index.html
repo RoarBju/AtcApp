@@ -41,7 +41,10 @@
             <option value="1000">1000</option>
         </select>
         </div> -->
-        <button type="button" class="topCenter mediumButton">Vis liste</button>
+        <div>
+        <button type="button" id="viewList" class="topCenter mediumButton">Vis liste</button>
+        <button type="button"  id="listBack" class="mediumButton">Back</button>
+        </div>
         <ul></ul>
     </script>
 
@@ -50,8 +53,9 @@
     </script>
 
     <script type="text/template" id="detailedView_template">
-            <div>Name: <%= name %> </div>
-            <div>Code: <%= code %> </div>
+        <div>Name: <%= name %> </div>
+        <div>Code: <%= code %> </div>
+        <button type="button" class="mediumButton">Back</button>
     </script>
 
     <!--Code -->
