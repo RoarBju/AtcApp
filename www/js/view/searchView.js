@@ -7,7 +7,6 @@ atc.view = atc.view || {};
             "touchstart button": "populateList" ,
         },
         initialize: function(options) {
-            this.render();
             atc.populate();
         },
 

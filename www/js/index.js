@@ -20,9 +20,8 @@ var atc = atc || {};
 var app = {
     // Application Constructor
     initialize: function() {
-        var mainview = new atc.view.main({el: $("#app"), className: "page"});
-        mainview.render();
         this.bindEvents();
+
     },
     // Bind Event Listeners
     //
