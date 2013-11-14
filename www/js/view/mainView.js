@@ -1,7 +1,7 @@
 atc.view = atc.view || {};
 
-(function() {
-   atc.view.main = Backbone.View.extend({
+(function(view) {
+   view.main = Backbone.View.extend({
        events: {
            "touchstart button": "search"
        },
@@ -13,10 +13,10 @@ atc.view = atc.view || {};
        },
 
        search: function() {
-            new atc.view.searchView({el: $("#searchView")});
-            atc.slider(this.$el,$("#searchView"), "right");
+           atc.routes.navigate("list", {trigger: true});
+           atc.slider(this.$el,$("#searchView"), "right");
            $("#detailedView").attr("class", "page right");
 
        }
    });
-})();
+})(atc.view);
