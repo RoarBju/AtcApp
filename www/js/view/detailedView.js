@@ -26,11 +26,6 @@ atc.view = atc.view || {};
            this.$el.one('webkitTransitionEnd', function(e) {
                that.close();
            });
-       },
-       close: function() {
-           this.undelegateEvents();
-           this.$el.empty();
        }
-
    });
 })();

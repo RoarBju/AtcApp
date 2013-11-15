@@ -19,6 +19,7 @@ atc.view = atc.view || {};
         },
 
         populateList: function() {
+            this.detatchButton()
             this.$el.find("ul").empty();
             var fragment = document.createDocumentFragment();
             atc.datacontainer.each(function(model) {
@@ -26,6 +27,16 @@ atc.view = atc.view || {};
                     fragment.appendChild(element.render().el);
             },this);
             this.$el.find("ul").append(fragment);
+        },
+
+        detatchButton: function() {
+            $("#viewList").prop("disabled","true");
+            /*
+            this.undelegateEvents();
+            this.events = _.clone(this.events);
+            delete this.events["touchstart #viewList"];
+            this.delegateEvents();*/
+            this.detachEvent("touchstart #viewList");
         },
 
         back: function() {

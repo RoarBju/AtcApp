@@ -16,7 +16,6 @@ atc.view = atc.view || {};
            atc.routes.navigate("list", {trigger: true});
            atc.slider(this.$el,$("#searchView"), "right");
            $("#detailedView").attr("class", "page right");
-
        }
    });
 })(atc.view);
