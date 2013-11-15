@@ -1,31 +1,38 @@
-atc.view = atc.view || {};
-
-(function() {
-   atc.view.detailedView = Backbone.View.extend({
+define([
+    'jquery',
+    'underscore',
+    'backbone',
+    'router/router',
+    'helpers/pageSlider',
+], function($, _, Backbone,Router, PageSlider){
+    var DetailedView = Backbone.View.extend({
         events: {
-        "touchstart button": "back"
+            "touchstart button": "back"
         },
 
-         initialize: function() {
-             this.render();
-         },
+        initialize: function() {
+            this.render();
+        },
 
         render: function() {
             var template = _.template($("#detailedView_template").html(), {
-                  code: this.model.getCode(),
-                  name: this.model.getName()
-             });
-             this.$el.html(template);
-             return this;
+                code: this.model.getCode(),
+                name: this.model.getName()
+            });
+            this.$el.html(template);
+            return this;
         },
 
-       back: function() {
-           atc.routes.navigate("list", {trigger: true});
-           atc.slider(this.$el,$("#searchView"), "left");
-           var that = this;
-           this.$el.one('webkitTransitionEnd', function(e) {
-               that.close();
-           });
-       }
-   });
-})();
+        back: function() {
+            Router.getRouter.navigate("list", {trigger: true});
+            PageSlider.slider(this.$el,$("#searchView"), "left");
+            var that = this;
+            this.$el.one('webkitTransitionEnd', function(e) {
+                that.close();
+            });
+        }
+    });
+
+    return DetailedView;
+
+});

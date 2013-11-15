@@ -16,47 +16,63 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var atc = atc || {};
-var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
+define([
+    'jquery',
+    'underscore',
+    'backbone',
+    'router/router', // Request router.js
+], function($, _, Backbone, Router){
+ /*
+    var app = {
+        // Application Constructor
+        initialize: function() {
+         //   this.bindEvents();
 
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicity call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
 
+        },
+        // Bind Event Listeners
+        //
+        // Bind any events that are required on startup. Common events are:
+        // 'load', 'deviceready', 'offline', and 'online'.
+        bindEvents: function() {
+            document.addEventListener('deviceready', this.onDeviceReady, false);
+        },
+        // deviceready Event Handler
+        //
+        // The scope of 'this' is the event. In order to call the 'receivedEvent'
+        // function, we must explicity call 'app.receivedEvent(...);'
+        onDeviceReady: function() {
+            app.receivedEvent('deviceready');
+        },
+        // Update DOM on a Received Event
+        receivedEvent: function(id) {
+
+        }
     }
-};
+    */
+    var initialize = function(){
+        // Pass in our Router module and call it's initialize function
+        Router.initialize();
+        Backbone.View.prototype.close = function() {
+            this.undelegateEvents();
+            this.$el.empty();
+        };
 
-atc.populate = function() {
-    atc.datacontainer = new atc.collection.elementList();
-    atc.datacontainer.fetch({
-            success: function() {
-                console.log("fetch sucess");
-            },
-            error: function() {
-                console.log("fetch error");
-            }
-        });
-}
+        Backbone.View.prototype.detachEvent = function(event) {
+            this.undelegateEvents();
+            this.events = _.clone(this.events);
+            delete this.events[event];
+            this.delegateEvents();
+        };
 
-atc.slider = function (current, page, from) {
-        page.attr("class", "page " + from);
-        page.attr("class", "page transition center");
-        current.attr("class", "page transition " + (from === "left" ? "right" : "left"));
-}
+        //    app.initialize();
+    };
+
+    return {
+        initialize: initialize
+    };
+});
+
+
+
+

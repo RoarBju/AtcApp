@@ -1,7 +1,8 @@
-atc.model = atc.model || {};
-
-(function() {
-    atc.model.atcEntry = Backbone.Model.extend({
+define([
+    'underscore',
+    'backbone'
+], function(_, Backbone){
+    var AtcEntry = Backbone.Model.extend({
         defaults:{
             atckodenavn:"",
             atckode:""
@@ -12,5 +13,8 @@ atc.model = atc.model || {};
         getCode: function() {
             return this.get("atckode");
         }
-     });
-})();
+    });
+
+    return AtcEntry;
+
+});

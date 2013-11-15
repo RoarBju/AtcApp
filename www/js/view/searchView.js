@@ -1,7 +1,14 @@
-atc.view = atc.view || {};
+define([
+    'jquery',
+    'underscore',
+    'backbone',
+    'router/router',
+    'view/listElement',
+    'helpers/pageSlider',
+    'collection/atc_collection'
+], function($, _, Backbone,Router,ListElement,PageSlider,AtcCollection){
 
-(function() {
-    atc.view.searchView = Backbone.View.extend({
+    var SearchView = Backbone.View.extend({
 
         events: {
             "touchstart #viewList": "populateList" ,
@@ -9,7 +16,8 @@ atc.view = atc.view || {};
         },
 
         initialize: function() {
-            atc.populate();
+            this.collection =  new AtcCollection();
+            this.collection.fetch();
         },
 
         render: function() {
@@ -22,26 +30,23 @@ atc.view = atc.view || {};
             this.detatchButton()
             this.$el.find("ul").empty();
             var fragment = document.createDocumentFragment();
-            atc.datacontainer.each(function(model) {
-                    var element = new atc.view.listElement({model: model});
-                    fragment.appendChild(element.render().el);
+            this.collection.each(function(model) {
+                var element = new ListElement({model: model});
+                fragment.appendChild(element.render().el);
             },this);
             this.$el.find("ul").append(fragment);
         },
 
         detatchButton: function() {
             $("#viewList").prop("disabled","true");
-            /*
-            this.undelegateEvents();
-            this.events = _.clone(this.events);
-            delete this.events["touchstart #viewList"];
-            this.delegateEvents();*/
             this.detachEvent("touchstart #viewList");
         },
 
         back: function() {
-            atc.routes.navigate("", {trigger: true});
-            atc.slider(this.$el,$("#app"), "left");
+            Router.getRouter.navigate("", {trigger: true});
+            PageSlider.slider(this.$el,$("#app"), "left");
         }
     })
-})();
+
+    return SearchView;
+});
