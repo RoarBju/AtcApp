@@ -2,11 +2,10 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'router/router',
     'view/listElement',
     'helpers/pageSlider',
     'collection/atc_collection'
-], function($, _, Backbone,Router,ListElement,PageSlider,AtcCollection){
+], function($, _, Backbone,ListElement,PageSlider,AtcCollection){
 
     var SearchView = Backbone.View.extend({
 
@@ -43,7 +42,7 @@ define([
         },
 
         back: function() {
-            Router.getRouter.navigate("", {trigger: true});
+            Backbone.history.navigate("", {trigger: true});
             PageSlider.slider(this.$el,$("#app"), "left");
         }
     })

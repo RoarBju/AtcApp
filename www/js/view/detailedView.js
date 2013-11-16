@@ -2,9 +2,8 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'router/router',
     'helpers/pageSlider',
-], function($, _, Backbone,Router, PageSlider){
+], function($, _, Backbone, PageSlider){
     var DetailedView = Backbone.View.extend({
         events: {
             "touchstart button": "back"
@@ -24,7 +23,7 @@ define([
         },
 
         back: function() {
-            Router.getRouter.navigate("list", {trigger: true});
+            Backbone.history.navigate("list", {trigger: true});
             PageSlider.slider(this.$el,$("#searchView"), "left");
             var that = this;
             this.$el.one('webkitTransitionEnd', function(e) {

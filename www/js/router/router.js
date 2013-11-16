@@ -12,7 +12,6 @@ define([
         }
     });
 
-    var app_router = null;
     var initialize = function() {
         var mainview = null;
         var listView = null;
@@ -36,8 +35,7 @@ define([
     };
 
     return {
-        initialize: initialize,
-        getRouter: app_router
+        initialize: initialize
     };
 });
 
